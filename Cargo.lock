@@ -2219,7 +2219,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rabbitmq_consumer"
+name = "rabbitmq-consumer"
 version = "0.1.0"
 dependencies = [
  "amqp",
