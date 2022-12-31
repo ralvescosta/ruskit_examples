@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+  "rabbitmq_consumer",
+]
+
+default-members = [
+  "rabbitmq_consumer",
+]

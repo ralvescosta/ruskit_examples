@@ -1,0 +1,19 @@
+[package]
+name = "rabbitmq_consumer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+env = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
+errors = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0"  }
+logging = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
+traces = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
+amqp = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
+health-readiness = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
+
+tokio = { version = "1.23.0", features = ["rt-multi-thread", "macros"] }
+tracing = { version = "0.1.37" }
+opentelemetry = { version = "0.18.0" }
+async-trait = { version = "0.1.59" }
+serde = { version = "1.0.150", features = ["derive"] }
+serde_json = { version = "1.0.89" }
