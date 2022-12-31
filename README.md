@@ -7,9 +7,8 @@ This repository was created to concentrate all examples about the [ruskit](https
 ## Examples
 
 - [RabbitMQ consumer](https://github.com/ralvescosta/ruskit_examples/tree/main/rabbitmq_consumer)
-  - RabbitMQ consumer
-    - Retry strategy
-    - DLQ
+  - Retry strategy
+  - DLQ
   - Health Readiness
   - Secret Manager
   - Open Telemetry with OTLP
