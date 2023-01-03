@@ -288,7 +288,7 @@ dependencies = [
 [[package]]
 name = "amqp"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "async-trait",
  "env",
@@ -1135,7 +1135,7 @@ dependencies = [
 [[package]]
 name = "env"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "base64",
  "dotenvy",
@@ -1147,7 +1147,7 @@ dependencies = [
 [[package]]
 name = "errors"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "thiserror",
 ]
@@ -1172,6 +1172,12 @@ name = "fallible-iterator"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4443176a9f2c162692bd3d352d745ef9413eec5782a80d8fd6f8a1ac692a07f7"
+
+[[package]]
+name = "fallible-streaming-iterator"
+version = "0.1.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7360491ce676a36bf9bb3c56c1aa791658183a54d2744120f27285738d90465a"
 
 [[package]]
 name = "fastrand"
@@ -1390,11 +1396,23 @@ name = "hashbrown"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
+dependencies = [
+ "ahash",
+]
+
+[[package]]
+name = "hashlink"
+version = "0.8.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "69fe1fcf8b4278d860ad0548329f892a3631fb63f82574df68275f34cdbe0ffa"
+dependencies = [
+ "hashbrown",
+]
 
 [[package]]
 name = "health-readiness"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "actix-web",
  "async-trait",
@@ -1480,7 +1498,7 @@ checksum = "c4a1e36c821dbe04574f602848a19f742f4fb3c98d40449f11bcad18d6b17421"
 [[package]]
 name = "httpw"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "actix-cors",
  "actix-web",
@@ -1655,6 +1673,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "201de327520df007757c1f0adce6e827fe8562fbc28bfd9c15571c66ca1f5f79"
 
 [[package]]
+name = "libsqlite3-sys"
+version = "0.25.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "29f835d03d717946d28b1d1ed632eb6f0e24a299388ee623d0c23118d3e8a7fa"
+dependencies = [
+ "pkg-config",
+ "vcpkg",
+]
+
+[[package]]
 name = "local-channel"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1694,7 +1722,7 @@ dependencies = [
 [[package]]
 name = "logging"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "env",
  "errors",
@@ -1724,6 +1752,20 @@ name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+[[package]]
+name = "migrator"
+version = "0.1.0"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
+dependencies = [
+ "async-trait",
+ "env",
+ "errors",
+ "logging",
+ "r2d2",
+ "r2d2_sqlite",
+ "tracing",
+]
 
 [[package]]
 name = "mime"
@@ -2219,6 +2261,27 @@ dependencies = [
 ]
 
 [[package]]
+name = "r2d2"
+version = "0.8.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "51de85fb3fb6524929c8a2eb85e6b6d363de4e8c48f9e2c2eac4944abc181c93"
+dependencies = [
+ "log",
+ "parking_lot",
+ "scheduled-thread-pool",
+]
+
+[[package]]
+name = "r2d2_sqlite"
+version = "0.21.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b4f5d0337e99cd5cacd91ffc326c6cc9d8078def459df560c4f9bf9ba4a51034"
+dependencies = [
+ "r2d2",
+ "rusqlite",
+]
+
+[[package]]
 name = "rabbitmq-consumer"
 version = "0.1.0"
 dependencies = [
@@ -2343,6 +2406,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "rusqlite"
+version = "0.28.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "01e213bc3ecb39ac32e81e51ebe31fd888a940515173e3a18a35f8c6e896422a"
+dependencies = [
+ "bitflags",
+ "fallible-iterator",
+ "fallible-streaming-iterator",
+ "hashlink",
+ "libsqlite3-sys",
+ "smallvec",
+]
+
+[[package]]
 name = "rustc_version"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2419,6 +2496,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "scheduled-thread-pool"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "977a7519bff143a44f842fd07e80ad1329295bd71686457f18e496736f4bf9bf"
+dependencies = [
+ "parking_lot",
+]
+
+[[package]]
 name = "scopeguard"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2437,7 +2523,7 @@ dependencies = [
 [[package]]
 name = "secrets-manager"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "async-trait",
  "aws-config",
@@ -2603,6 +2689,31 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f6002a767bff9e83f8eeecf883ecb8011875a21ae8da43bffb817a57e78cc09"
 dependencies = [
  "lock_api",
+]
+
+[[package]]
+name = "sql-pool"
+version = "0.1.0"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
+dependencies = [
+ "env",
+ "errors",
+ "r2d2",
+ "r2d2_sqlite",
+ "rusqlite",
+ "tracing",
+]
+
+[[package]]
+name = "sql_migration"
+version = "0.1.0"
+dependencies = [
+ "env",
+ "logging",
+ "migrator",
+ "sql-pool",
+ "tokio",
+ "tracing",
 ]
 
 [[package]]
@@ -2938,7 +3049,7 @@ checksum = "b6bc1c9ce2b5135ac7f93c72918fc37feb872bdc6a5533a8b85eb4b86bfdae52"
 [[package]]
 name = "traces"
 version = "0.1.0"
-source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.6.0#3d5b83dd0e66a386404f513885c1f36fbd7a6200"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.7.0#fd2e62ae7e40033f4a84111f2866ae104a01a775"
 dependencies = [
  "env",
  "opentelemetry",

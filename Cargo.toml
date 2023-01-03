@@ -2,8 +2,10 @@
 
 members = [
   "rabbitmq_consumer",
+  "sql_migration",
 ]
 
 default-members = [
   "rabbitmq_consumer",
+  "sql_migration",
 ]

@@ -12,3 +12,5 @@ This repository was created to concentrate all examples about the [ruskit](https
   - Health Readiness
   - Secret Manager
   - Open Telemetry with OTLP
+
+- [SQL Migration](https://github.com/ralvescosta/ruskit_examples/tree/main/sql_migration)
