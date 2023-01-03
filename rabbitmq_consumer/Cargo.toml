@@ -4,12 +4,12 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-env = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
-errors = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0"  }
-logging = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
-traces = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
-amqp = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
-health-readiness = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.6.0" }
+env = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.7.0" }
+errors = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.7.0"  }
+logging = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.7.0" }
+traces = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.7.0" }
+amqp = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.7.0" }
+health-readiness = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.7.0" }
 
 tokio = { version = "1.23.0", features = ["rt-multi-thread", "macros"] }
 tracing = { version = "0.1.37" }

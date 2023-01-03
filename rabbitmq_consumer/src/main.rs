@@ -3,7 +3,7 @@ mod viewmodel;
 
 use amqp::{
     client::AmqpImpl,
-    consumer::Dispatches,
+    dispatcher::Dispatcher,
     topology::{AmqpTopology, ExchangeDefinition, QueueDefinition},
 };
 use env::{self, Config, ConfigBuilder};
@@ -26,7 +26,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     traces::otlp::setup(&cfg)?;
 
     let amqp = AmqpImpl::new(&cfg).await?;
-    let mut dispatches = Dispatches::new(amqp.clone());
+    let mut dispatches = Dispatcher::new(amqp.clone());
 
     let queue = QueueDefinition::name(QUEUE)
         .with_dlq()
