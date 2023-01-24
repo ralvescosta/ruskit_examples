@@ -6,7 +6,7 @@ use amqp::{
     dispatcher::Dispatcher,
     topology::{AmqpTopology, ExchangeDefinition, QueueDefinition},
 };
-use env::{self, Config, ConfigBuilder};
+use env::{self, ConfigBuilder, Empty};
 use handlers::SimpleHandler;
 use health_readiness::HealthReadinessServer;
 use logging;
@@ -20,9 +20,16 @@ const ROUTING_KEY: &str = "random-routing-key";
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let cfg: Config = ConfigBuilder::new().use_aws_secrets().build().await?;
+    let (app_cfg, mut builder) = ConfigBuilder::new()
+        .load_from_aws_secret()
+        .amqp()
+        .health()
+        .laze_load();
 
-    logging::setup(&cfg)?;
+    logging::setup(&app_cfg)?;
+
+    let cfg = builder.build::<Empty>().await?;
+
     traces::otlp::setup(&cfg)?;
 
     let amqp = AmqpImpl::new(&cfg).await?;
@@ -44,7 +51,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .declare(queue.clone(), SimpleAmqpMessage::get_event(), handler)
         .expect("unexpected error while registering dispatch");
 
-    let health_readiness = HealthReadinessServer::new(&cfg).rabbitmq(amqp.connection());
+    let health_readiness =
+        HealthReadinessServer::new(&cfg.health_readiness).rabbitmq(amqp.connection());
 
     match tokio::join!(health_readiness.run(), dispatches.consume_blocking()) {
         (Err(e), _) => {

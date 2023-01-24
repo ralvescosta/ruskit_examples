@@ -1,16 +1,18 @@
 use std::{error::Error, sync::Arc};
 
-use env::{Config, ConfigBuilder};
+use env::{Config, ConfigBuilder, Empty};
 use migrator::{Migrator, SqliteDriver};
 use sql_pool::sqlite::conn_pool;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let cfg: Config = ConfigBuilder::new().use_aws_secrets().build().await?;
+    let (app_cfg, mut builder) = ConfigBuilder::new().load_from_aws_secret().laze_load();
 
-    logging::setup(&cfg)?;
+    logging::setup(&app_cfg)?;
 
-    let pool = conn_pool(&cfg)?;
+    let cfg = builder.build::<Empty>().await?;
+
+    let pool = conn_pool(&cfg.sqlite)?;
     let pool = Arc::new(pool);
 
     let driver = SqliteDriver::new(pool.clone());
