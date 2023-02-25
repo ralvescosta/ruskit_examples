@@ -4,3 +4,17 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+env = { git = "ssh://git@github.com/ralvescosta/ruskit.git",  rev = "v1.12.0" }
+logging = { git = "ssh://git@github.com/ralvescosta/ruskit.git",  rev = "v1.12.0"  }
+httpw = { git = "ssh://git@github.com/ralvescosta/ruskit.git",  rev = "v1.12.0" }
+traces = { git = "ssh://git@github.com/ralvescosta/ruskit.git",  rev = "v1.12.0"  }
+metrics = { git = "ssh://git@github.com/ralvescosta/ruskit.git",  rev = "v1.12.0"  }
+
+actix-web = { version = "4.3.0" }
+serde = { version = "1.0.152", features = ["derive"] }
+serde_json = "1.0.93"
+opentelemetry = { version = "0.18.0" }
+async-trait = { version = "0.1.61" }
+tracing = { version = "0.1.37" }
+tokio = { version = "1.25.0", features = ["default", "rt-multi-thread", "macros", "signal"] }
+utoipa = { version = "3.0.2", features = ["actix_extras"] }

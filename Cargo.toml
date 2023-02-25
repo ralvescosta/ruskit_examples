@@ -3,9 +3,11 @@
 members = [
   "rabbitmq_consumer",
   "sql_migration",
+  "http_api",
 ]
 
 default-members = [
   "rabbitmq_consumer",
   "sql_migration",
+  "http_api",
 ]

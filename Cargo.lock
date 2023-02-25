@@ -1577,6 +1577,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "http-api"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "async-trait",
+ "env",
+ "httpw",
+ "logging",
+ "metrics",
+ "opentelemetry",
+ "serde",
+ "serde_json",
+ "tokio",
+ "traces",
+ "tracing",
+ "utoipa",
+]
+
+[[package]]
 name = "http-body"
 version = "0.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1887,6 +1906,19 @@ name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+[[package]]
+name = "metrics"
+version = "0.1.0"
+source = "git+ssh://git@github.com/ralvescosta/ruskit.git?rev=v1.12.0#bb4d746b14a205cc9169a8ab989699d8d6eaa2f5"
+dependencies = [
+ "env",
+ "opentelemetry",
+ "opentelemetry-otlp",
+ "tokio",
+ "tonic",
+ "tracing",
+]
 
 [[package]]
 name = "migrator"
