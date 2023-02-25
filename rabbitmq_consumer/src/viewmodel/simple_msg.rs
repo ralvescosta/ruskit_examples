@@ -1,5 +1,4 @@
-use amqp::types::AmqpMessage;
-use errors::amqp::AmqpError;
+use amqp::{errors::AmqpError, types::AmqpMessage};
 use serde::{Deserialize, Serialize};
 use tracing::error;
 

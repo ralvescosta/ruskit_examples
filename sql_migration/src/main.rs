@@ -1,8 +1,7 @@
-use std::{error::Error, sync::Arc};
-
-use env::{Config, ConfigBuilder, Empty};
+use env::{ConfigBuilder, Empty};
 use migrator::{Migrator, SqliteDriver};
 use sql_pool::sqlite::conn_pool;
+use std::{error::Error, sync::Arc};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {

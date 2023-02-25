@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-env = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.9.0" }
-logging = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.9.0" }
-sql-pool = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.9.0", features = ["sqlite"] }
-migrator = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.9.0", features = ["sqlite"] }
+env = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.12.0" }
+logging = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.12.0" }
+sql-pool = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.12.0", features = ["sqlite"] }
+migrator = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.12.0", features = ["sqlite"] }
 
 tracing = { version = "0.1.37" }
-tokio = { version = "1.23.0", features = ["default", "rt-multi-thread", "macros"] }
+tokio = { version = "1.25.0", features = ["default", "rt-multi-thread", "macros"] }

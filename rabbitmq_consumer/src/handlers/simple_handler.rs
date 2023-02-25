@@ -1,7 +1,6 @@
 use crate::viewmodel::SimpleAmqpMessage;
-use amqp::topology::ConsumerHandler;
+use amqp::{errors::AmqpError, topology::ConsumerHandler};
 use async_trait::async_trait;
-use errors::amqp::AmqpError;
 use opentelemetry::Context;
 use std::sync::Arc;
 use tracing::info;
