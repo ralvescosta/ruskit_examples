@@ -1,4 +1,6 @@
-use amqp::{errors::AmqpError, types::AmqpMessage};
+use std::fmt::Display;
+
+use amqp::errors::AmqpError;
 use serde::{Deserialize, Serialize};
 use tracing::error;
 
@@ -8,27 +10,26 @@ pub struct SimpleAmqpMessage {
     pub created_at: String,
 }
 
-impl SimpleAmqpMessage {
-    pub fn from_bytes(b: &[u8]) -> Result<SimpleAmqpMessage, AmqpError> {
-        serde_json::from_slice::<SimpleAmqpMessage>(b).map_err(|e| {
-            error!(
-                error = e.to_string(),
-                payload = format!("{:?}", b),
-                "parsing error"
-            );
-            AmqpError::AckMessageDeserializationError(e.to_string())
-        })
+impl Display for SimpleAmqpMessage {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "SimpleAmqpMessage")
     }
 }
 
-impl AmqpMessage for SimpleAmqpMessage {
-    fn get_type(&self) -> String {
-        "SimpleAmqpMessage".to_owned()
-    }
-}
+impl TryFrom<&[u8]> for SimpleAmqpMessage {
+    type Error = AmqpError;
 
-impl SimpleAmqpMessage {
-    pub fn get_event() -> String {
-        "SimpleAmqpMessage".to_owned()
+    fn try_from(value: &[u8]) -> Result<Self, Self::Error> {
+        match serde_json::from_slice::<SimpleAmqpMessage>(value) {
+            Ok(v) => Ok(v),
+            Err(err) => {
+                error!(
+                    error = err.to_string(),
+                    payload = format!("{:?}", value),
+                    "parsing error"
+                );
+                Err(AmqpError::AckMessageDeserializationError(err.to_string()))
+            }
+        }
     }
 }
