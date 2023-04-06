@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "http-server",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=http-server",
+          "--package=http-server"
+        ],
+        "filter": {
+          "name": "http-server",
+          "kind": "bin"
+        }
+      },
+      "env": {
+        "RUST_ENV": "local",
+        "APP_NAME": "http-server",
+        "RUST_BACKTRACE": "full",
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole"
+    },
+  ]
+}

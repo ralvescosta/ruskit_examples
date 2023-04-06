@@ -11,3 +11,15 @@ default-members = [
   "sql_migration",
   "http_api",
 ]
+
+[workspace.dependencies]
+env = { path = "../ruskit/env" }
+httpw = { path = "../ruskit/httpw" }
+auth = { path = "../ruskit/auth" }
+rx-protocol = { path = "../ruskit/rx_protocol" }
+logging = { path = "../ruskit/logging" }
+traces = { path = "../ruskit/traces" }
+metrics = { path = "../ruskit/metrics" }
+amqp = { path = "../ruskit/amqp" }
+sql-pool = { path = "../ruskit/sql_pool", features = ["postgres"] }
+health-readiness = { path = "../ruskit/health_readiness" }

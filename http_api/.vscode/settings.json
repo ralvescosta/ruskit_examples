@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-action.json": "file:///home/ralvescosta/Desktop/Hedro/rust/filters/.github/workflows/action.yml"
+  }
+}
