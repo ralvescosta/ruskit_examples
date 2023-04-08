@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-env = { workspace = true }
+configs = { workspace = true }
+configs-builder = { workspace = true }
 logging = { workspace = true  }
 httpw = { workspace = true }
 auth = { workspace = true }

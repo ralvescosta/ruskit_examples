@@ -13,7 +13,8 @@ default-members = [
 ]
 
 [workspace.dependencies]
-env = { path = "../ruskit/env" }
+configs = { path = "../ruskit/configs" }
+configs-builder = { path = "../ruskit/configs_builder" }
 httpw = { path = "../ruskit/httpw" }
 auth = { path = "../ruskit/auth" }
 rx-protocol = { path = "../ruskit/rx_protocol" }

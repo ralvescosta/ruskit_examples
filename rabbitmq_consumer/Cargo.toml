@@ -4,21 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-env = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.14.0" }
-logging = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.14.0" }
-traces = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.14.0" }
-amqp = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.14.0" }
-health-readiness = { git = "ssh://git@github.com/ralvescosta/ruskit.git", rev = "v1.14.0" }
-
-# env = { path = "../../ruskit/env" }
-# logging = { path = "../../ruskit/logging" }
-# traces = { path = "../../ruskit/traces" }
-# amqp = { path = "../../ruskit/amqp" }
-# health-readiness = { path = "../../ruskit/health_readiness" }
+configs = { workspace = true }
+configs-builder = { workspace = true }
+logging = { workspace = true  }
+traces = { workspace = true  }
+amqp = { workspace = true  }
+health-readiness = { workspace = true  }
 
 tokio = { version = "1.25.0", features = ["rt-multi-thread", "macros"] }
 tracing = { version = "0.1.37" }
-opentelemetry = { version = "0.18.0" }
+opentelemetry = { version = "0.19.0" }
 async-trait = { version = "0.1.63" }
 serde = { version = "1.0.150", features = ["derive"] }
 serde_json = { version = "1.0.89" }

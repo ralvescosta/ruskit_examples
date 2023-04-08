@@ -9,9 +9,9 @@ use amqp::{
     queue::{QueueBinding, QueueDefinition},
     topology::{AmqpTopology, Topology},
 };
-use env::{self, ConfigBuilder, Empty};
+use configs::Empty;
+use configs_builder::ConfigBuilder;
 use handlers::SimpleHandler;
-use logging;
 use std::error::Error;
 use tracing::error;
 use viewmodel::SimpleAmqpMessage;
@@ -22,17 +22,16 @@ const ROUTING_KEY: &str = "random-routing-key";
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let (app_cfg, mut builder) = ConfigBuilder::new()
-        .load_from_aws_secret()
+    let cfgs = ConfigBuilder::new()
+        .use_aws_secret_manager()
         .amqp()
         .health()
-        .laze_load();
+        .build::<Empty>()
+        .await?;
 
-    logging::setup(&app_cfg)?;
-    let cfg = builder.build::<Empty>().await?;
-    traces::otlp::setup(&cfg)?;
+    traces::otlp::setup(&cfgs)?;
 
-    let (_, channel) = channel::new_amqp_channel(&cfg).await?;
+    let (_, channel) = channel::new_amqp_channel(&cfgs).await?;
 
     let queue_def = QueueDefinition::new(QUEUE)
         .with_dlq()

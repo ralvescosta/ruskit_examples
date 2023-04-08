@@ -2,7 +2,8 @@ mod openapi;
 mod todos;
 
 use auth::jwt_manager::auth0::Auth0JwtManager;
-use env::{ConfigBuilder, Configs, Empty};
+use configs::{Configs, Empty};
+use configs_builder::ConfigBuilder;
 use httpw::server::HTTPServer;
 use openapi::ApiDoc;
 use std::error::Error;
@@ -28,15 +29,12 @@ async fn main() -> Result<(), Box<dyn Error>> {
 }
 
 async fn default_setup<'cfg>() -> Result<Configs<Empty>, Box<dyn Error>> {
-    let (app_cfg, mut builder) = ConfigBuilder::new()
-        .load_from_aws_secret()
+    let cfg = ConfigBuilder::new()
+        .use_aws_secret_manager()
         .otlp()
         .auth0()
-        .laze_load();
-
-    logging::setup(&app_cfg)?;
-
-    let cfg = builder.build::<Empty>().await?;
+        .build::<Empty>()
+        .await?;
 
     traces::otlp::setup(&cfg)?;
     metrics::otlp::setup(&cfg)?;
